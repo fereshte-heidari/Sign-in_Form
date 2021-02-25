@@ -6,20 +6,26 @@ function App() {
   function inputEvent(event) {
     setName(event.target.value);
   }
-  function buttonEvent() {
+  function buttonEvent(event) {
     setSubmit(name);
+
+    event.preventDefault();
   }
 
   return (
     <div className="container">
       <h1>Hello {submit} </h1>
-      <input
-        onChange={inputEvent}
-        value={name}
-        type="text"
-        placeholder="What's your name?"
-      />
-      <button onClick={buttonEvent}>Submit</button>
+      <form onSubmit={buttonEvent}>
+        <input
+          onChange={inputEvent}
+          value={name}
+          type="text"
+          placeholder="What's your name?"
+        />
+        <button type="submit" onClick={buttonEvent}>
+          Submit
+        </button>
+      </form>
     </div>
   );
 }
